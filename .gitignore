@@ -1,3 +1,4 @@
 *.exe
 *.md
 *.exe.stackdump
+sh.exe.stackdump
