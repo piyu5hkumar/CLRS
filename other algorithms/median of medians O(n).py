@@ -12,15 +12,16 @@ def partition(all, pivot):
     return left, right
 
 
-def findele(all, k, process):
-    if process:print('k',k)
-    if process:
-        print('all', all)
+def findele(all, k, process =False):
+    # process = True for debugging purposes
+    # if process:print('k',k)
+    # if process:
+    #     print('all', all)
     if len(all) <= 5:
         all.sort()
-        if process:
-            print('about to return from',all)
-            print('returned median', all[k])
+        # if process:
+        #     print('about to return from',all)
+        #     print('returned median', all[k])
         return all[k]
     medians = []
     i = 0
@@ -39,21 +40,16 @@ def findele(all, k, process):
     if len(left) == k:
         return arb_median
     elif len(left) > k:
-        if process:
-            print('recurred left array')
+        # if process:
+        #     print('recurred left array')
         return findele(left, k, process)
     elif len(left) < k:
         k = k - len(left) - 1
-        if process:
-            print('recurred right array')
+        # if process:
+        #     print('recurred right array')
         return findele(right, k, process)
 
 
 all = [i for i in range(1, 14)]
-k = len(all)//2
-for i in range(100000):
-    random.shuffle(all)
-    if findele(all, k, False) != 7:
-        print('nnnnnnnnnneeewwww')
-        print(all)
-        print(findele(all, k, True))
+k = len(all)//2  #index to be searched, it can be median or something else
+print(findele(all,k))
